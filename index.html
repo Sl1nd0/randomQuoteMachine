@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	 <link rel="stylesheet" href="style.css">
+	 
+	 <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	
+
+$(document).ready(function(){
+	
+	var quote1 = '';
+	var author1 = '';
+	$.get("https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json", function(data, status){
+    
+	let r = parseInt(Math.random() * (255 - 0) + 0);
+	let g = parseInt(Math.random() * (255 - 0) + 0);	
+	let b = parseInt(Math.random() * (255 - 0) + 0);	
+	
+	let color = "rgb(" + r + "," + g + "," + b + ")" 
+	
+	$("body").css("background-color", color);
+	
+    let data1 = JSON.parse(data);
+    let total = data1.quotes.length;  
+    let index = parseInt(Math.random() * (100 - 0) + 0);  
+    let quoteJson = data1.quotes[index].quote;
+	let author = data1.quotes[index].author;
+	
+	quote1 = quoteJson;
+	author1 = author;
+   
+      //alert(quoteJson);
+      $("#text").html('<font size="6"> "' + quoteJson + '"</font>');
+	  $("#author").html(author);      
+      
+    });
+
+  $("button").click(function(){
+    $.get("https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json", function(data, status){
+    
+	let r = parseInt(Math.random() * (255 - 0) + 0);
+	let g = parseInt(Math.random() * (255 - 0) + 0);	
+	let b = parseInt(Math.random() * (255 - 0) + 0);
+	
+	let color = "rgb(" + r + "," + g + "," + b + ")" 
+	
+	$("body").css("background-color", color);
+	
+    let data1 = JSON.parse(data);
+    let total = data1.quotes.length;  
+    let index = parseInt(Math.random() * (100 - 0) + 0);  
+    let quoteJson = data1.quotes[index].quote;
+	let author = data1.quotes[index].author;
+	
+	quote1 = quoteJson;
+	author1 = author;
+	 //alert(quoteJson);
+	 
+      $("#text").html('<font size="6"> "' + quoteJson + '"</font>');
+	  $("#author").html(author);      
+      
+    });
+  });
+  
+  $("#tweet-quote").click(function() {
+	
+	let mylink = $("#tweet-quote").attr("href");
+	mylink += "?text=" +  encodeURI(quote1) + " - " + encodeURI(author1) + "&hashtags=quote";
+	
+	alert(quote1 + ' ' + author1);
+	
+	//alert(mylink);
+	 $("#tweet-quote").attr("href", mylink);
+   });
+});
+
+</script>
+
+</head>
+<body>
+
+<center><div class="center" id="quote-box" text-align = "center">
+  <p id="text"> </p> <div class="quote-author">
+      <font size="6">- <span id="author"> </span></font> 
+	  <div id="quote-button">
+	  <button class = "button" type="button" id="new-quote"><font size="3">New quote </font></button>
+	 <div class = "icons"> 
+ <a href = "https://twitter.com/intent/tweet" id="tweet-quote" > <i class="fab fa-twitter" style="font-size: 2.73em;"></i> </a>
+ <a href = "https://www.linkedin.com/in/silindokuhle-nkabinde-743497161/"> <i class="fab fa-linkedin" id="icon2" style="font-size: 2.73em;"></i> </a>
+   </div>
+	  </div>
+	 
+    </div>
+	</p>
+	
+</div>
+ 
+</center>
+
+
+</body>
+</html>

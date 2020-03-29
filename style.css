@@ -1,0 +1,36 @@
+.center {
+  position:relative;
+  margin-top: 10%;
+  --margin:8% auto auto auto;
+  width:450px;
+  padding:40px 50px;
+
+  padding: 10px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+a {
+ color: black;
+}
+.quote-author {
+	margin-left: 35%;
+}
+
+#quote-button {
+	margin-top: 10%;
+	margin-left: 10%;
+}
+
+.button 
+{
+	display: block;
+	background-color: grey;
+	border-radius: 8px;
+	width: 60%;
+	height: 50px;
+} 
+
+.icons {
+	margin-left: -180%;
+}
